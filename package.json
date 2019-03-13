@@ -1,8 +1,9 @@
 {
-  "name": "Rangoui",
+  "name": "rango-ui",
   "version": "0.0.1",
   "description": "Rango UI Component",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "repository": "https://github.com/ERROR-LWEI/Rangoui.git",
   "author": "wei.liu <error_lwei@163.com>",
   "license": "MIT",
