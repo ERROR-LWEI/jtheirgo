@@ -11,7 +11,8 @@
   "scripts": {
     "export:run": "scripty",
     "build:cmd": "babel modules -d lib",
-    "build:es": "babel modules -d es"
+    "build:es": "babel modules -d es",
+    "md": "node scripts/compile/generatemd.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -26,6 +27,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-import": "^1.11.0",
     "classnames": "^2.2.6",
+    "react-docgen": "^4.1.0",
+    "recast": "^0.17.3",
     "scripty": "^1.9.1"
   },
   "peerDependencies": {
