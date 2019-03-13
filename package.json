@@ -1,0 +1,35 @@
+{
+  "name": "Rangoui",
+  "version": "0.0.1",
+  "description": "Rango UI Component",
+  "main": "lib/index.js",
+  "repository": "https://github.com/ERROR-LWEI/Rangoui.git",
+  "author": "wei.liu <error_lwei@163.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "export:run": "scripty",
+    "build:cmd": "babel modules -d lib",
+    "build:es": "babel modules -d es"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-import": "^1.11.0",
+    "classnames": "^2.2.6",
+    "scripty": "^1.9.1"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
