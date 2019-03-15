@@ -8,9 +8,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -18,59 +18,31 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /*
  * @Author: wei.liu 
- * @Date: 2019-03-13 17:54:12 
+ * @Date: 2019-03-13 16:03:55 
  * @Last Modified by: wei.liu
- * @Last Modified time: 2019-03-13 18:51:03
+ * @Last Modified time: 2019-03-13 18:19:01
  */
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-/**
- * Input 组件
- */
 
-var Input =
+var Card =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Input, _React$Component);
+  _inherits(Card, _React$Component);
 
-  function Input(props) {
-    var _this;
+  function Card(props) {
+    _classCallCheck(this, Card);
 
-    _classCallCheck(this, Input);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
-    _this.state = {};
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Card).call(this, props));
   }
-  /**
-   * 获取值的改变
-   */
 
-
-  _createClass(Input, [{
-    key: "onChange",
-    value: function onChange(node, value) {}
-  }, {
+  _createClass(Card, [{
     key: "render",
     value: function render() {
-      var value = this.props.value;
-      return React.createElement("input", {
-        value: value
-      });
+      return React.createElement("div", null, "1");
     }
   }]);
 
-  return Input;
+  return Card;
 }(React.Component);
 
-Input.propTypes = {
-  /**
-   * 传入的value值
-   */
-  value: PropTypes.any.isRequired
-};
-Input.defaultProps = {
-  value: ''
-};
-export { Input as default };
+export { Card as default };

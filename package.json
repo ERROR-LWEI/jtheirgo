@@ -9,10 +9,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "export:run": "scripty",
-    "build:cmd": "babel modules -d lib",
-    "build:es": "babel modules -d es",
-    "md": "node scripts/compile/generatemd.js"
+    "export": "node scripts/export.js export modules --file modules/index.js",
+    "compile": "node scripts/compile.js compile modules -e es -c lib",
+    "babel": "babel --config-file ./.babelrc modules -d lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -26,10 +25,13 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-import": "^1.11.0",
+    "chalk": "^2.4.2",
     "classnames": "^2.2.6",
+    "commander": "^2.19.0",
     "react-docgen": "^4.1.0",
     "recast": "^0.17.3",
-    "scripty": "^1.9.1"
+    "scripty": "^1.9.1",
+    "shelljs": "^0.8.3"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
