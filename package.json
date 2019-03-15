@@ -11,7 +11,7 @@
   "scripts": {
     "export": "node scripts/export.js export modules --file modules/index.js",
     "compile": "node scripts/compile.js compile modules -e es -c lib",
-    "babel": "babel --config-file ./.babelrc modules -d lib"
+    "md": "node scripts/markdown.js markdown  modules -f md"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

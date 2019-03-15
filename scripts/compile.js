@@ -40,7 +40,7 @@ function compileFunc(dir, cmd, cmds) {
         console.log(chalk.green('-------------'))
         shell.mkdir(path.resolve(cwd, cmd[_cmd]));
 
-        console.log(chalk.green(`> 编译${_cmd}模块`))
+        console.log(chalk.green(`> 编译${_cmd}模块 >> ${cmd[_cmd]}文件夹`))
         console.log(chalk.green('-------------'))
         shell.exec(`babel --config-file ./${_cmd}.babelrc ${dir} -d ${cmd[_cmd]}`)
     }
