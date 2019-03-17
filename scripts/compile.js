@@ -2,9 +2,9 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 const commander = require('commander');
 const path = require('path');
-const fs = require('fs');
 const package = require('../package.json');
 
+// 执行命令的路径
 const cwd = process.cwd();
 
 commander
@@ -13,6 +13,17 @@ commander
 .option('-e, es [fileName]', 'es module export directory')
 .option('-c, cmd [fileName]', 'cmd module export directory')
 .action(function(dir, cmd) {
+    // 原始模块目录
+    const modulePath = path.resolve(cwd, dir);
+    const isExitsModule = shell.find(modulePath);
+
+    // 没有原始模块目录
+    if (!!isExitsModule.code) {
+        console.log(chalk.red(`> 模块目录 ${modulePath} 为空`))
+        shell.exit(1);
+    }
+
+    // 操作命令集合,option参数数组
     const cmds = cmd.options.filter(function(opt) { 
         return opt.long !== '--version' && cmd[opt.long] && (typeof cmd[opt.long] !== 'boolean') 
     })
@@ -25,7 +36,12 @@ commander
 
 commander.parse(process.argv);
 
-
+/**
+ * babel编译函数
+ * @param {*} dir 原始模块文件夹路径
+ * @param {*} cmd 命令数据集合
+ * @param {*} cmds option命令数组
+ */
 function compileFunc(dir, cmd, cmds) {
 
     while(cmds.length !== 0){

@@ -33,7 +33,7 @@ commander
         const mdCode = createMarkdownCode(code);
         console.log(chalk.green(`> 向 ${mdPath}文件夹中写入\n> ${mdCode.filename}.md`))
         console.log(chalk.green(`-----------------`))
-        fs.writeFileSync(`${mdPath}\\${mdCode.filename}.md`, mdCode.code);
+        fs.writeFileSync(`${mdPath}/${mdCode.filename}.md`, mdCode.code);
     })
 });
 
@@ -75,7 +75,6 @@ function createMarkdownCode(code) {
                 type = prop[1].type ? prop[1].type.name : '无',
                 defaultValue = prop[1].defaultValue ? prop[1].defaultValue.value : '无',
                 description = prop[1].description;
-                console.log(prop[1].type)
         mdCode+=`|${name}|${type}|${defaultValue}|${description}|\n`;
     })
     return {

@@ -24,14 +24,18 @@ function exportFunc(dir, file) {
         shell.exit(1);
     }
     
+    const modulePath = path.resolve(cwd, file);
     let code = '';
 
-    const isExits = shell.find(path.resolve(cwd, file));
+    const isExits = shell.find(modulePath);
 
     if (!isExits.code) {
         console.log(chalk.green('> 删除原有文件'))
         console.log(chalk.green('-------------'))
         shell.rm(path.resolve(cwd, file))
+    } else {
+        console.log(chalk.red(`> 不存在文件及目录 ${file}`))
+        shell.exit(1);
     }
 
     shell.ls(path.resolve(cwd, `${dir}`)).forEach(function(file) {
