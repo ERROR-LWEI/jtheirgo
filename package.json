@@ -16,9 +16,8 @@
   "scripts": {
     "export": "node scripts/export.js export modules --file modules/index.js",
     "compile": "node scripts/compile.js compile modules -e es -c lib",
-    "copystyle": "node scripts/copyStyle.js copystyle modules -e es -c lib",
     "md": "node scripts/markdown.js markdown  modules -f md",
-    "build": "yarn export && yarn compile && yarn copystyle && yarn md"
+    "build": "yarn export && yarn compile && yarn md"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

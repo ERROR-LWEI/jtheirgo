@@ -2,6 +2,7 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 const commander = require('commander');
 const path = require('path');
+const fs = require('fs');
 const package = require('../package.json');
 
 // 执行命令的路径
@@ -59,6 +60,30 @@ function compileFunc(dir, cmd, cmds) {
         console.log(chalk.green(`> 编译${_cmd}模块 >> ${cmd[_cmd]}文件夹`))
         console.log(chalk.green('-------------'))
         shell.exec(`babel --config-file ./${_cmd}.babelrc ${dir} -d ${cmd[_cmd]}`)
+        copystyle(dir, cmd[_cmd], 'styles');
     }
 
+}
+
+function copystyle(dir, file, styleFile) {
+    const target = path.resolve(cwd, file);
+    const source = path.resolve(cwd, dir);
+    shell.ls(source).forEach(function(_file) {
+        const filePath = path.resolve(source, _file);
+        const tarFilPath = path.resolve(target, `${_file}/${styleFile}`);
+        const state = fs.statSync(filePath);
+        if (state && state.isDirectory()) {
+            console.log(chalk.green(`> 拷贝${_file}的样式文件到${_file}/${styleFile}`));
+            console.log(chalk.green('-------------'))
+            const _styles = path.resolve(filePath, styleFile);
+            shell.ls(_styles).forEach(function(name) {
+                const styleFileName = path.resolve(_styles, name);
+                const suffix = path.extname(styleFileName);
+                console.log(suffix)
+                if (suffix !== '.js') {
+                    shell.cp('-R', styleFileName, tarFilPath)
+                }
+            })
+        }
+    })
 }
