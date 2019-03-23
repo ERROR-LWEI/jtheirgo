@@ -1,6 +1,6 @@
 {
-  "name": "rango-ui",
-  "version": "1.0.9",
+  "name": "jtheirgo",
+  "version": "0.0.1",
   "description": "Rango UI Component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -8,11 +8,17 @@
   "author": "wei.liu <error_lwei@163.com>",
   "license": "MIT",
   "private": false,
+  "files": [
+    "es",
+    "lib",
+    "md"
+  ],
   "scripts": {
     "export": "node scripts/export.js export modules --file modules/index.js",
     "compile": "node scripts/compile.js compile modules -e es -c lib",
+    "copystyle": "node scripts/copyStyle.js copystyle modules -e es -c lib",
     "md": "node scripts/markdown.js markdown  modules -f md",
-    "build": "yarn export && yarn compile && yarn md"
+    "build": "yarn export && yarn compile && yarn copystyle && yarn md"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -27,7 +33,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-import": "^1.11.0",
     "chalk": "^2.4.2",
-    "classnames": "^2.2.6",
     "commander": "^2.19.0",
     "react-docgen": "^4.1.0",
     "recast": "^0.17.3",
@@ -35,6 +40,13 @@
     "shelljs": "^0.8.3"
   },
   "peerDependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"

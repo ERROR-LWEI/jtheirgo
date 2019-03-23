@@ -1,0 +1,35 @@
+/* input provider style */
+.ran-input {
+    position: relative;
+}
+
+/* input style */
+.ran-input input {
+    padding: 10px;
+    position: relative;
+    height: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.ran-input input:focus {
+    border: 1px solid rgb(76, 73, 250)
+}
+
+.ran-input-warpper input {
+    padding-left: 10px;
+}
+
+.ran-input-pre-warpper input {
+    padding-left: 30px;
+}
+
+/* input prefiux style */
+.ran-input-pre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 10px;
+    color: #000;
+}

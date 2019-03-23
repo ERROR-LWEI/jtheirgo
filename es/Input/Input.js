@@ -8,9 +8,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -32,27 +32,53 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
 
-    _this.onChange = function onChange(e) {
-      var onChange = this.props.onChange;
+    _this.onChange = function (e) {
+      var onChange = _this.props.onChange;
       onChange(e, e.target.value);
     };
 
+    _this.saveInput = _this.saveInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Input, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      this.input = this.refs.input;
+    value: function componentDidMount() {}
+    /**
+     * 保存dom原型
+     * @param {*} dom 
+     */
+
+  }, {
+    key: "saveInput",
+    value: function saveInput(dom) {
+      this.input = dom;
     }
   }, {
     key: "getInputElement",
-    value: function getInputElement(className) {
-      var value = this.props.value;
+
+    /**
+     * 获取input
+     * @param {*} className 
+     */
+    value: function getInputElement() {
+      var _this$props = this.props,
+          value = _this$props.value,
+          prefix = _this$props.prefix;
+      var preFixclassName = classnames({
+        "ran-input-pre": prefix ? true : false
+      });
+      var warpperClassName = classnames({
+        "ran-input": true,
+        "ran-input-warpper": prefix ? false : true,
+        "ran-input-pre-warpper": prefix ? true : false
+      });
       return React.createElement("span", {
-        className: className
-      }, React.createElement("input", {
-        ref: "input",
+        className: warpperClassName
+      }, React.createElement("span", {
+        className: preFixclassName
+      }, prefix), React.createElement("input", {
+        ref: this.saveInput,
         onChange: this.onChange,
         value: value
       }));
@@ -66,15 +92,13 @@ function (_React$Component) {
   }, {
     key: "renderInput",
     value: function renderInput(labelElement, inputElement) {
-      React.createElement("div", null, labelElement, inputElement);
+      return React.createElement("div", null, labelElement, inputElement);
     }
   }, {
     key: "render",
     value: function render() {
       var label = this.props.label;
-      return this.renderInput(this.renderLabel(), this.getInputElement(classnames({
-        "antd": label ? true : false
-      })));
+      return this.renderInput(this.renderLabel(), this.getInputElement());
     }
   }]);
 
@@ -95,11 +119,17 @@ Input.propTypes = {
   /**
    * 输入框名称
    */
-  label: PropTypes.string
+  label: PropTypes.string,
+
+  /**
+   * 输入框前缀
+   */
+  prefix: PropTypes.node
 };
 Input.defaultProps = {
   value: '',
   onChange: function onChange() {},
-  label: null
+  label: null,
+  prefix: null
 };
 export { Input as default };
